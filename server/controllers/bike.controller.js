@@ -8,6 +8,11 @@ bikeCtrl.getBike = async (req,res) => {
 
 }
 
+bikeCtrl.unassignedBike = async (req,res) => {
+    const bike = await Bike.find();
+    res.json(bike.filter(assign => assign.inStation == false));
+}
+
 bikeCtrl.getOneBike = async(req, res) => {
     const bike = await Bike.findById(req.params.id);
     res.json(bike);

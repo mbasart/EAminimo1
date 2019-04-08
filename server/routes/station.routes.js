@@ -10,6 +10,8 @@ router.post('/station', station.createStation);
 router.put('/station/:id',station.editStation); //DEMANAT EXPLICIT AL EXEMPLE 
 router.delete('/station/:id', station.deleteStation); //pel minim del exemple no es demanat (crec que no funciona)
 
+router.get('/unassigned',bike.unassignedBike);
+
 router.get('/bikes', bike.getBike);
 router.get('/oneBike/:id',bike.getOneBike);
 router.post('/bike',bike.createBike);

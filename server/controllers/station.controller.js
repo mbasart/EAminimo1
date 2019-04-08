@@ -29,6 +29,7 @@ stationCtrl.editStation = async(req,res) => {
     const {id} = req.params;
     const bike = req.body.bikes;
     await Station.findByIdAndUpdate(id, {$push: {bikes: bike}});
+    await Bike.findOneAndUpdate({"_id": bike}, {$set: {inStation: true}} );
     res.json({status: 'Station updated'});
 }
 
