@@ -4,6 +4,8 @@ import { StationService } from '../../services/station.service';
 import { NgForm } from '@angular/forms';
 import { Station } from 'src/app/models/station';
 
+import {Router} from "@angular/router";
+
 declare var M: any;
 
 @Component({
@@ -14,7 +16,7 @@ declare var M: any;
 })
 export class SubjectsComponent implements OnInit {
 
-  constructor(private stationService: StationService) { }
+  constructor(private stationService: StationService, private router: Router) { }
 
   ngOnInit() {
     this.getSubjects();
@@ -66,6 +68,10 @@ export class SubjectsComponent implements OnInit {
           M.toast({html: 'Deleted Successfully'});
         })
     }
+  }
+
+  obtenirBikes(){
+    this.router.navigateByUrl("/api/bikes");
   }
 
 }

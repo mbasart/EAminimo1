@@ -8,11 +8,13 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { SubjectsComponent } from './components/stations/subjects.component';
+import { BikesComponent } from './components/bikes/bikes.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SubjectsComponent
+    SubjectsComponent,
+    BikesComponent
   ],
   imports: [
     BrowserModule,
