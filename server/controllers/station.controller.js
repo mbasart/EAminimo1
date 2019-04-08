@@ -25,12 +25,20 @@ stationCtrl.createStation = async(req,res) => {
     res.json('received');
 }
 
-stationCtrl.editStation = async(req,res) => {
+stationCtrl.editStationAdd = async(req,res) => {
     const {id} = req.params;
     const bike = req.body.bikes;
-    await Station.findByIdAndUpdate(id, {$push: {bikes: bike}});
+    await Station.findByIdAndUpdate(id, {$addToSet: {bikes: bike}});
     await Bike.findOneAndUpdate({"_id": bike}, {$set: {inStation: true}} );
-    res.json({status: 'Station updated'});
+    res.json({status: 'Bike added to station'});
+}
+
+stationCtrl.editStationDelete = async(req,res) => {
+    const {id} = req.params;
+    const bike = req.body.bikes;
+    await Station.findByIdAndUpdate(id, {$pull: {bikes: bike}});
+    await Bike.findOneAndUpdate({"_id": bike}, {$set: {inStation: false}} );
+    res.json({status: 'Bike deleted from station'});
 }
 
 stationCtrl.deleteStation = async(req,res) => {

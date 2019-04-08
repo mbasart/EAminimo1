@@ -9,8 +9,8 @@ bikeCtrl.getBike = async (req,res) => {
 }
 
 bikeCtrl.unassignedBike = async (req,res) => {
-    const bike = await Bike.find();
-    res.json(bike.filter(assign => assign.inStation == false));
+    const bike = await Bike.find({inStation: false});
+    res.json(bike);
 }
 
 bikeCtrl.getOneBike = async(req, res) => {

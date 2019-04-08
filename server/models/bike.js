@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 const BikeSchema = new Schema ({
     name: String,
-    kms: String,
+    kms: Number,
     description: String,
     inStation: Boolean
 })
