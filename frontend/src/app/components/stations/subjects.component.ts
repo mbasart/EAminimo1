@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { SubjectService } from '../../services/subject.service';
+import { StationService } from '../../services/station.service';
 import { NgForm } from '@angular/forms';
-import { Subject } from 'src/app/models/subject';
+import { Station } from 'src/app/models/station';
 
 declare var M: any;
 
@@ -10,11 +10,11 @@ declare var M: any;
   selector: 'app-subjects',
   templateUrl: './subjects.component.html',
   styleUrls: ['./subjects.component.css'],
-  providers: [SubjectService]
+  providers: [StationService]
 })
 export class SubjectsComponent implements OnInit {
 
-  constructor(private subjectService: SubjectService) { }
+  constructor(private stationService: StationService) { }
 
   ngOnInit() {
     this.getSubjects();
@@ -22,14 +22,14 @@ export class SubjectsComponent implements OnInit {
 
   addStudent(form: NgForm) {
     if(form.value._id){
-      this.subjectService.putStudent(form.value)
+      this.stationService.putBike(form.value)
       .subscribe(res => {
         this.resetForm(form);
         M.toast({html: 'Alumna afegit correctament'});
         this.getSubjects();
       })
     } else{
-      this.subjectService.postSubject(form.value)
+      this.stationService.postStation(form.value)
       .subscribe(res => {
         this.resetForm(form);
         M.toast({html: 'Assignatura creada correctament'});
@@ -39,27 +39,27 @@ export class SubjectsComponent implements OnInit {
   }
 
   getSubjects() {
-    this.subjectService.getSubjects()
+    this.stationService.getStations()
     .subscribe(res =>{
-      this.subjectService.subject = res as Subject[];
+      this.stationService.station = res as Station[];
       console.log(res);
     })
   }
 
-  editSubject(subject: Subject) {
-    this.subjectService.selectedSubject = subject;
+  editSubject(subject: Station) {
+    this.stationService.selectedStation = subject;
   }
 
   resetForm(form?: NgForm) {
     if(form){
       form.reset();
-      this.subjectService.selectedSubject = new Subject();
+      this.stationService.selectedStation = new Station();
     }
   }
 
   deleteSubject(_id: string, form: NgForm) {
     if(confirm('Are you sure you want to delete it?')){
-      this.subjectService.deleteSubject(_id)
+      this.stationService.deleteStation(_id)
         .subscribe(res =>{
           this.getSubjects();
           this.resetForm(form);

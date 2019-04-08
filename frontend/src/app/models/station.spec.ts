@@ -1,7 +1,7 @@
-import { Subject } from './subject';
+import { Station } from './station';
 
 describe('Subject', () => {
   it('should create an instance', () => {
-    expect(new Subject()).toBeTruthy();
+    expect(new Station()).toBeTruthy();
   });
 });

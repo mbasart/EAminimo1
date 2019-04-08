@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { SubjectsComponent } from './components/subjects/subjects.component';
+import { SubjectsComponent } from './components/stations/subjects.component';
 
 @NgModule({
   declarations: [

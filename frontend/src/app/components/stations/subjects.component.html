@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col s5">
+    <!--<div class="col s5">
       <div class="card">
         <div class="card-content">
           <form #subjectForm="ngForm" (ngSubmit)="addStudent(subjectForm)">
@@ -22,58 +22,30 @@
           </form>
         </div>
       </div>
-    </div>
+    </div>-->
     <div class="col s7">
       <table>
         <thead>
-          <th>Name</th>
-          <th>Id student</th>
-          <th>Students Name</th>
-          <th>Students address</th>
-          <th>Phones</th>
-          <th>Edit and delete</th>
+          <th>Station</th>
+          <th>State</th>
+          <th>Description</th>
         </thead>
         <tbody>
-          <tr *ngFor="let subject of subjectService.subject">
-            <td>{{subject.name}}</td>
+          <tr *ngFor="let station of stationService.station">
+            <td>{{station.name}}</td>
+            <td>{{station.state}}</td>
+            <td>{{station.description}}</td>
             <td>
-              <table>
-                <tr *ngFor="let student of subject.students">
-                  <td>{{student._id}}</td>
-              </table>
+              <button>View</button>
             </td>
-            <td>
-              <table>
-                <tr *ngFor="let student of subject.students">
-                  <td>{{student.name}}</td>
-              </table>
-            </td>
-            <td>
-              <table>
-                <tr *ngFor="let student of subject.students">
-                  <td>{{student.address}}</td>
-              </table>
-            </td>
-            <td>
-              <table>
-                <tr *ngFor="let student of subject.students">
-                  <td>
-                    <table>
-                      <tr *ngFor="let phone of student.phones">
-                        <td>{{phone.work}} {{phone.home}}</td>
-                      </tr>
-                    </table>
-                  </td>
-              </table>
-            </td>
-            <td>
+            <!--<td>
               <a (click)="editSubject(subject)">
                 <i class="material-icons">edit</i>
               </a>
               <a (click)="deleteSubject(subject._id, subjectForm)">
                 <i class="material-icons">delete</i>
               </a>
-            </td>
+            </td>-->
           </tr>
         </tbody>
       </table>
