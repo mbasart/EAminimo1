@@ -1,3 +1,50 @@
-<p>
-  bikes works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col s7">
+      <h1>Assigned bikes</h1>
+      <table>
+        <thead>
+          <th>bike</th>
+          <th>kms</th>
+          <th>Description</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let bike of bikeService.bike">
+            <td>{{ bike.name}}</td>
+            <td>{{bike.kms}}</td>
+            <td>{{bike.description}}</td>
+            <td>
+              <button (click)="deleteBikes(bike)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<div class="container">
+    <div class="row">
+      <div class="col s7">
+        <h1>Unassigned bikes</h1>
+        <table>
+          <thead>
+            <th>bike</th>
+            <th>kms</th>
+            <th>Description</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let bike of bikeService.bikesUnassigned">
+              <td>{{ bike.name}}</td>
+              <td>{{bike.kms}}</td>
+              <td>{{bike.description}}</td>
+              <td>
+                <button (click)="addBikes(bike)">Add</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
