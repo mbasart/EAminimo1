@@ -27,4 +27,8 @@ export class BikeService {
   unassigned() {
     return this.http.get(this.URL_API + '/unassigned');
   }
+
+  getOneStation(_id: string) {
+    return this.http.get(this.URL_API + `/oneStation/${_id}` )
+  }
 }

@@ -38,9 +38,9 @@ export class BikesComponent implements OnInit {
   getOneStation() {
     //this.changeService.changeStationId(this.stationId);
     if(this.stationId != "0") {
-    this.stationService.getOneStation(this.stationId)
+    this.bikeService.getOneStation(this.stationId)
       .subscribe(res => {
-        this.stationService.bike = res as Bike[];
+        this.bikeService.bike = res["bikes"] as Bike[];
       })
     }
   }
