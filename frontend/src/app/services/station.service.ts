@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Station } from '../models/station';
+import { Bike} from '../models/bike';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ export class StationService {
 
   selectedStation: Station;
   station: Station[];
+  bike: Bike[];
   readonly URL_API = 'http://localhost:3000/api/todos';
 
   constructor(private http: HttpClient) { 
@@ -20,7 +22,7 @@ export class StationService {
   }
 
   getOneStation(_id: string) {
-    return this.http.get(this.URL_API + `/station/${_id}` )
+    return this.http.get(this.URL_API + `/oneStation/${_id}` )
   }
 
   postStation(station: Station) {

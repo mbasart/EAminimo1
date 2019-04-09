@@ -18,24 +18,36 @@ declare var M: any;
 })
 export class BikesComponent implements OnInit {
 
-  constructor(private bikeService: BikeService, private router: Router, private stationService: StationService) {}
+  stationId: string;
+
+  constructor(private bikeService: BikeService, private router: Router, private stationService: StationService, private changeService: ChangeService) {}
 
   ngOnInit() {
-    //this.changeService.clickedStationId(stationId => this.stationId = stationId)
+    this.changeService.clickedStationId.subscribe(stationId => this.stationId =stationId)
+    console.log("Id del element clickat: "+this.stationId)
+    if(this.stationId=="0")
+    {
+      this.router.navigateByUrl("/");
+    }
+
+
     this.getOneStation();
     this.unassigned();
   }
 
   getOneStation() {
-    this.stationService.getOneStation(this.stationService.selectedStation._id)
+    //this.changeService.changeStationId(this.stationId);
+    if(this.stationId != "0") {
+    this.stationService.getOneStation(this.stationId)
       .subscribe(res => {
-        this.bikeService.bike = res["bikes"] as Bike[];
+        this.stationService.bike = res as Bike[];
       })
+    }
   }
 
   addBikes(bike) {
     this.bikeService.selectedBike = bike;
-    this.bikeService.addBikes(this.stationService.selectedStation._id,bike)
+    this.bikeService.addBikes(this.stationId,bike)
       .subscribe(res=>{
         this.getOneStation();
         this.unassigned();
@@ -44,7 +56,7 @@ export class BikesComponent implements OnInit {
 
   deleteBikes(bike) {
     this.bikeService.selectedBike = bike;
-    this.bikeService.deleteBikes(this.stationService.selectedStation._id,bike)
+    this.bikeService.deleteBikes(this.stationId,bike)
       .subscribe(res =>{
         this.getOneStation();
         this.unassigned();

@@ -16,9 +16,13 @@ declare var M: any;
 })
 export class SubjectsComponent implements OnInit {
 
+  stationId: string;
+
   constructor(private stationService: StationService, private router: Router, private changeService: ChangeService) { }
 
   ngOnInit() {
+    this.changeService.clickedStationId.subscribe(stationId => this.stationId =stationId)
+
     this.getSubjects();
   }
 
@@ -30,7 +34,8 @@ export class SubjectsComponent implements OnInit {
     })
   }
 
-  obtenirBikes(station){
+  obtenirBikes(id){
+    this.changeService.changeStationId(id);
     this.router.navigateByUrl("/api/bikes");
   }
 

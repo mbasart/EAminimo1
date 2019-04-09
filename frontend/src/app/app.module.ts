@@ -10,6 +10,8 @@ import { AppComponent } from './app.component';
 import { SubjectsComponent } from './components/stations/subjects.component';
 import { BikesComponent } from './components/bikes/bikes.component';
 
+import { ChangeService } from './services/change.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +24,7 @@ import { BikesComponent } from './components/bikes/bikes.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [ChangeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
